@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
     def index
-        @posts = Post.all
-       end
+        @posts = Post.all.includes(:likes)
+    end
+
+
+       
 end

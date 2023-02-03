@@ -1,7 +1,31 @@
 <h1>Dasbord</h1>
 <% @posts.each do |f| %>
 
+
 <b>Title:</b><%= f.title %><br>
-<b>Description:</b><%= f.description%><br><br>
+<b>Description:</b><%= f.description%><br>
+
+<%# <%= button_to 'Like', post_likes_path(f), method: :post %> 
+<%= f.likes.size %> 
+<%= (f.likes.size) == 1 ? 'Like' : 'Likes'%>
+
+
+
+<% pre_like = f.likes.where(active: true).find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_likes_path(f), method: :post %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(f), method: :post %>
+<% end %>
+
+
+
+<%= button_to "Edit Post", edit_post_path(f), method:  :get %>
+
+
+ <%= button_to "Destroy",post_path(f) ,method: :delete, class:"btn btn-danger"%><br>
+
+
+
 
 <% end %>

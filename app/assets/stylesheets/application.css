@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ 
+ body {
+    background-color: skyblue;
+    background-image: image-url('/assets/photos.jpg');
+
+}

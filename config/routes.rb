@@ -4,5 +4,10 @@ Rails.application.routes.draw do
  resources :posts
   # Defines the root path route ("/")
   root "home#index"
-  resources :categories
+  resources :categories  
+  # delete 'posts/:id', to: 'posts#destroy'
+  resources :posts do
+    resources :likes
+  end
+
 end
